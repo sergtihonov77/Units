@@ -1,0 +1,79 @@
+﻿@model List<Units.Models.Employee>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h3>Select the file to upload</h3>
+        @if (ViewBag.Message != string.Empty)
+        {
+            <h4 class="alert alert-danger" role="alert">@ViewBag.Message</h4>
+        }
+
+        @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+        {
+            <input type="file" name="upload" /><br>
+            <input type="submit" value="Load" class="btn btn-danger btn-sm" />
+        }
+    </div>
+
+    <div class="col-md-8 col-md-offset-4">
+        @if (ViewBag.Drop != null)
+        {
+            <span>@Html.DropDownList("Drop", (IEnumerable<SelectListItem>)ViewBag.Drop, new { @class = "form - control", id = "selectUnit" })</span>
+            <button class="btn btn-danger btn-sm" id="btnView">View Employees</button>
+        }
+    </div>
+</div>
+
+
+<div>
+    <table id="myTbl">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Position</td>
+                <td>Hire Date</td>
+                <td>Unit</td>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+
+<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+@section Scripts
+    {
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var table = $('#myTbl').DataTable({
+                searching: false,
+                paging: false,
+                retrieve: true,
+                destroy: true
+            });
+
+            $('#btnView').click(function () {
+                var unit = $("#selectUnit option:selected").text()
+                table.destroy()
+                table = $('#myTbl').DataTable({
+                    "ajax": {
+                        "url": '@Url.Action("GetDataJson","Home")?unit=' + unit,
+                        "type": "GET",
+                        "contentType": "application/json; charset=utf-8"
+                    },
+                    "columns":
+                    [
+                        { "data": 'Name' },
+                        { "data": 'Position' },
+                        { "data": 'HireDate' },
+                        { "data": 'UnitName' }
+                    ],
+                    searching: false,
+                    paging: false,
+                    retrieve: true,
+                    destroy: true
+                });
+            });
+        });
+    </script>
+}

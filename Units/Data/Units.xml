@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Units>
+  <Unit Title ="Developer Team">
+    <Employee Name="Petrov I.D." Position="Team Lead" HireDate="2011.12.15" />
+    <Employee Name="Sidorenko I.S." Position="C# Developer" HireDate="2011.10.15" />
+    <Employee Name="Milanova E.I." Position="Designer" HireDate="2011.01.10" />
+    <Employee Name="Lindao T.N." Position="JavaScript Developer" HireDate="2011.03.22" />
+  </Unit>
+
+  <Unit Title ="Business Team"> 
+    <Employee Name="Minorniy G.W." Position="Marketing Manager" HireDate="2009.11.28" />
+    <Employee Name="Diligan Y.R." Position="Finance Director" HireDate="2007.01.01" />
+    <Employee Name="Smirnova D.A." Position="Accountant" HireDate="2008.05.14" />
+    <Employee Name="Burinova I.A." Position="Accountant" HireDate="2009.08.14" />
+  </Unit>
+
+  <Unit Title ="Test Team">
+    <Employee Name="Demidov M.D." Position="Analyst" HireDate="2010.10.15" />
+    <Employee Name="Monitorov D.S." Position="Tester" HireDate="2012.06.15" />
+    <Employee Name="Pavlov D.E." Position="Tester" HireDate="2012.08.10" />
+    <Employee Name="Bindaev D.E." Position="Tester" HireDate="2012.08.19" />
+  </Unit>
+</Units> 
