@@ -30,17 +30,20 @@ namespace Units.Models
             {
                 Unit unit = new Unit();
                 unit.Employees = new List<Employee>();
-                unit.Title = node.Attributes[0].Value;
+                unit.Title = node.Attributes.GetNamedItem("Title").Value.ToString();
+
                 foreach (XmlNode emplnode in node.ChildNodes)
                 {
+                    ///if using DateTime type
+                    ///
                     //string dateString = emplnode.Attributes[2].Value;
                     // char separtor = '.';
                     //string[] dateValues = dateString.Split(separtor);
 
                     Employee employee = new Employee();
-                    employee.Name = emplnode.Attributes[0].Value;
-                    employee.Position = emplnode.Attributes[1].Value;
-                    employee.HireDate = emplnode.Attributes[2].Value;
+                    employee.Name = emplnode.Attributes.GetNamedItem("Name").Value.ToString();
+                    employee.Position = emplnode.Attributes.GetNamedItem("Position").Value.ToString();
+                    employee.HireDate = emplnode.Attributes.GetNamedItem("HireDate").Value.ToString();
                     employee.UnitName = unit.Title;
                     unit.Employees.Add(employee);
                 }

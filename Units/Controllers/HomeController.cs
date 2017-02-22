@@ -51,7 +51,6 @@ namespace Units.Controllers
 
             if (upload != null)
             {
-                //string length = upload.ContentLength.ToString();
                 errorMessage = "";
 
                 string fileName = System.IO.Path.GetFileName(upload.FileName);
